@@ -1,10 +1,12 @@
 <script>
   const SIZE = 512
+  const baseUrl = import.meta.env.BASE_URL
+  const withBase = (path) => `${baseUrl}${path.replace(/^\//, '')}`
 
   const logoOptions = [
-    { id: 'png', name: 'OpenClaw (PNG)', src: '/openclaw.png' },
-    { id: 'svg', name: 'OpenClaw (SVG)', src: '/openclaw.svg' },
-    { id: 'wordmark', name: 'OpenClaw Wordmark Light', src: '/openclaw-wordmark-light.svg', autoWidth: true },
+    { id: 'png', name: 'OpenClaw (PNG)', src: withBase('/openclaw.png') },
+    { id: 'svg', name: 'OpenClaw (SVG)', src: withBase('/openclaw.svg') },
+    { id: 'wordmark', name: 'OpenClaw Wordmark Light', src: withBase('/openclaw-wordmark-light.svg'), autoWidth: true },
   ]
 
   const cornerOptions = [
@@ -30,7 +32,7 @@
 
   let fileInput
   let uploadName = 'avatar.jpeg'
-  let uploadedImageUrl = '/avatar.jpeg'
+  let uploadedImageUrl = withBase('/avatar.jpeg')
   let outputDataUrl = ''
   let downloadName = 'avatar-openclaw.png'
 
@@ -161,7 +163,7 @@
   function resetState() {
     if (uploadedImageUrl.startsWith('blob:')) URL.revokeObjectURL(uploadedImageUrl)
     uploadName = 'avatar.jpeg'
-    uploadedImageUrl = '/avatar.jpeg'
+    uploadedImageUrl = withBase('/avatar.jpeg')
     outputDataUrl = ''
     downloadName = 'avatar-openclaw.png'
     originalImage = null
@@ -208,7 +210,7 @@
 
   async function loadDefaultAvatar() {
     try {
-      originalImage = await loadImage('/avatar.jpeg')
+      originalImage = await loadImage(withBase('/avatar.jpeg'))
       await renderAvatar()
     } catch (error) {
       console.error('Default avatar missing. Upload an image to continue.', error)
