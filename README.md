@@ -1,7 +1,25 @@
-# avatar-for-openclaw
+# OpenClaw Avatar Maker
 
-OpenClaw has become very popular recently. This simple online tool lets you create a custom avatar for OpenClaw.
+A static web app built with **Vite + Svelte + Tailwind CSS**.
 
+## Features
 
-- Use Vite, Svelte, tailwindcss, and pure web technologies to build this site
-- Core interaction: the user uploads an avatar, we add the OpenClaw 🦐 logo, and then the user downloads it to set on their bot.
+- Upload an avatar image and auto-crop to square output.
+- Add OpenClaw logo overlay with **2 icon variants**.
+- Choose logo position: top-left, top-right, bottom-left, bottom-right.
+- Choose avatar corner style: square, small radius, large radius, extra radius, full round.
+- Choose border color: red, blue, or custom.
+- Download final PNG image.
+
+## Run
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
