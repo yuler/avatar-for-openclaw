@@ -23,8 +23,8 @@
   ]
 
   const borderPresets = [
-    { id: 'red', label: 'Red', value: '#ef4444' },
-    { id: 'blue', label: 'Blue', value: '#2563eb' },
+    { id: 'violet', label: 'Violet', value: '#7c3aed' },
+    { id: 'cyan', label: 'Cyan', value: '#06b6d4' },
     { id: 'custom', label: 'Custom', value: '' },
   ]
 
@@ -53,7 +53,7 @@
   const currentRadius = () => radiusOptions.find((item) => item.id === cornerRadiusType)?.value ?? 0
   const currentBorderColor = () => {
     if (borderMode === 'custom') return customBorderColor || '#111111'
-    return borderPresets.find((item) => item.id === borderMode)?.value ?? '#ef4444'
+    return borderPresets.find((item) => item.id === borderMode)?.value ?? '#7c3aed'
   }
 
   function roundedRectPath(ctx, x, y, w, h, r) {
@@ -227,26 +227,26 @@
 
 <svelte:window on:load={loadDefaultAvatar} />
 
-<main class="min-h-screen bg-white px-4 py-6 text-black">
+<main class="min-h-screen bg-gradient-to-b from-[#f7f4ff] via-[#f8fbff] to-[#eef3ff] px-4 py-6 text-slate-900">
   <div class="mx-auto w-full max-w-6xl space-y-4">
     <header class="space-y-2 text-center md:text-left">
       <p
-        class="inline-flex items-center gap-2 rounded-full border border-black px-3 py-1 text-xs font-semibold tracking-wide"
+        class="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white/80 px-3 py-1 text-xs font-semibold tracking-wide text-violet-700 shadow-sm backdrop-blur"
       >
         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2v20M2 12h20" />
         </svg>
         OPENCLAW AVATAR MAKER
       </p>
-      <h1 class="text-2xl font-bold">Upload Avatar → Add OpenClaw Logo → Download</h1>
-      <p class="text-sm text-zinc-700">White theme, mobile-first layout, all processing happens in your browser.</p>
+      <h1 class="text-2xl font-bold text-slate-900">Upload Avatar → Add OpenClaw Logo → Download</h1>
+      <p class="text-sm text-slate-600">Notion-style pastel theme, soft cards, and all processing in your browser.</p>
     </header>
 
     <section class="grid gap-4 md:grid-cols-2">
-      <div class="flex flex-col rounded-2xl border border-black bg-white p-4">
+      <div class="flex flex-col rounded-3xl border border-violet-200 bg-white/85 p-4 shadow-lg shadow-violet-100/60 backdrop-blur-sm">
         <label
           for="avatar"
-          class="flex min-h-[280px] flex-1 cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-black bg-zinc-50 p-4 text-center"
+          class="flex min-h-[280px] flex-1 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-violet-300 bg-gradient-to-b from-violet-50 to-cyan-50 p-4 text-center text-slate-700"
           on:dragover|preventDefault
           on:drop={handleDrop}
         >
@@ -258,7 +258,7 @@
               <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 16.25" /><path d="M8 16h8" />
             </svg>
             <span class="mt-2 text-sm font-semibold">Click or drag to upload an avatar</span>
-            <span class="mt-1 text-xs text-zinc-600">PNG / JPG / WEBP</span>
+            <span class="mt-1 text-xs text-slate-500">PNG / JPG / WEBP</span>
           {/if}
         </label>
         <input
@@ -271,14 +271,14 @@
         />
       </div>
 
-      <div class="space-y-4 rounded-2xl border border-black bg-white p-4">
+      <div class="space-y-4 rounded-3xl border border-violet-200 bg-white/85 p-4 shadow-lg shadow-violet-100/60 backdrop-blur-sm">
         <div class="space-y-3">
-          <h2 class="text-sm font-semibold">1) OpenClaw Logo</h2>
+          <h2 class="text-sm font-semibold text-slate-700">1) OpenClaw Logo</h2>
           <div class="grid grid-cols-2 gap-2">
             {#each logoOptions as item}
               <button
                 type="button"
-                class={`rounded-lg border px-2 py-2 text-xs ${selectedLogo === item.id ? 'border-black bg-black text-white' : 'border-black bg-white text-black'}`}
+                class={`rounded-xl border px-2 py-2 text-xs transition ${selectedLogo === item.id ? 'border-violet-500 bg-violet-600 text-white shadow-md shadow-violet-200' : 'border-violet-200 bg-white text-slate-700 hover:border-violet-300 hover:bg-violet-50'}`}
                 on:click={() => (selectedLogo = item.id)}
               >
                 <img src={item.src} alt={item.name} class="mx-auto h-10 rounded" />
@@ -289,12 +289,12 @@
         </div>
 
         <div class="space-y-3">
-          <h2 class="text-sm font-semibold">2) Logo Position</h2>
+          <h2 class="text-sm font-semibold text-slate-700">2) Logo Position</h2>
           <div class="flex flex-wrap gap-2">
             {#each cornerOptions as option}
               <button
                 type="button"
-                class={`rounded-md border px-2 py-2 text-xs ${logoPosition === option.id ? 'border-black bg-black text-white' : 'border-black bg-white text-black'}`}
+                class={`rounded-lg border px-2 py-2 text-xs transition ${logoPosition === option.id ? 'border-violet-500 bg-violet-600 text-white shadow-sm shadow-violet-200' : 'border-violet-200 bg-white text-slate-700 hover:border-violet-300 hover:bg-violet-50'}`}
                 on:click={() => (logoPosition = option.id)}
               >
                 <span class="mr-1">{option.icon}</span>{option.label}
@@ -304,12 +304,12 @@
         </div>
 
         <div class="space-y-3">
-          <h2 class="text-sm font-semibold">3) Avatar Radius</h2>
+          <h2 class="text-sm font-semibold text-slate-700">3) Avatar Radius</h2>
           <div class="flex flex-wrap gap-2">
             {#each radiusOptions as option}
               <button
                 type="button"
-                class={`rounded-md border px-2 py-2 text-xs ${cornerRadiusType === option.id ? 'border-black bg-black text-white' : 'border-black bg-white text-black'}`}
+                class={`rounded-lg border px-2 py-2 text-xs transition ${cornerRadiusType === option.id ? 'border-violet-500 bg-violet-600 text-white shadow-sm shadow-violet-200' : 'border-violet-200 bg-white text-slate-700 hover:border-violet-300 hover:bg-violet-50'}`}
                 on:click={() => (cornerRadiusType = option.id)}
               >
                 <span class="mr-1">{option.icon}</span>{option.label}
@@ -319,12 +319,12 @@
         </div>
 
         <div class="space-y-3">
-          <h2 class="text-sm font-semibold">4) Border Color</h2>
+          <h2 class="text-sm font-semibold text-slate-700">4) Border Color</h2>
           <div class="grid grid-cols-3 gap-2">
             {#each borderPresets as option}
               <button
                 type="button"
-                class={`rounded-md border px-2 py-2 text-xs ${borderMode === option.id ? 'border-black bg-black text-white' : 'border-black bg-white text-black'}`}
+                class={`rounded-lg border px-2 py-2 text-xs transition ${borderMode === option.id ? 'border-violet-500 bg-violet-600 text-white shadow-sm shadow-violet-200' : 'border-violet-200 bg-white text-slate-700 hover:border-violet-300 hover:bg-violet-50'}`}
                 on:click={() => (borderMode = option.id)}
               >
                 {option.label}
@@ -332,9 +332,9 @@
             {/each}
           </div>
           {#if borderMode === 'custom'}
-            <label class="flex items-center gap-2 text-xs">
+            <label class="flex items-center gap-2 text-xs text-slate-700">
               Custom color
-              <input class="h-8 w-10 rounded border border-black" type="color" bind:value={customBorderColor} />
+              <input class="h-8 w-10 rounded-lg border border-violet-200" type="color" bind:value={customBorderColor} />
               <span>{customBorderColor}</span>
             </label>
           {/if}
@@ -344,7 +344,7 @@
           href={outputDataUrl || '#'}
           download={downloadName}
           aria-disabled={!outputDataUrl}
-          class="block rounded-lg border border-black bg-black px-4 py-3 text-center text-sm font-semibold text-white aria-disabled:pointer-events-none aria-disabled:opacity-40"
+          class="block rounded-xl border border-violet-500 bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-violet-300/40 transition hover:from-violet-500 hover:to-indigo-500 aria-disabled:pointer-events-none aria-disabled:opacity-40"
         >
           Download PNG
         </a>
