@@ -1,7 +1,24 @@
-# avatar-for-openclaw
+# OpenClaw Avatar Maker
 
-OpenClaw has become very popular recently. This simple online tool lets you create a custom avatar for OpenClaw.
+A static web app built with **Vite + Svelte + Tailwind CSS**.
 
+## What it does
 
-- Use Vite, Svelte, tailwindcss, and pure web technologies to build this site
-- Core interaction: the user uploads an avatar, we add the OpenClaw 🦐 logo, and then the user downloads it to set on their bot.
+- Upload an avatar image.
+- Adds an OpenClaw 🦐 badge in the bottom-right corner.
+- Download the final PNG for your bot profile.
+
+Everything happens locally in the browser with canvas APIs.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
