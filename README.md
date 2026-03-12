@@ -2,15 +2,16 @@
 
 A static web app built with **Vite + Svelte + Tailwind CSS**.
 
-## What it does
+## Features
 
-- Upload an avatar image.
-- Adds an OpenClaw 🦐 badge in the bottom-right corner.
-- Download the final PNG for your bot profile.
+- Upload an avatar image and auto-crop to square output.
+- Add OpenClaw logo overlay with **2 icon variants**.
+- Choose logo position: top-left, top-right, bottom-left, bottom-right.
+- Choose avatar corner style: square, small radius, large radius, extra radius, full round.
+- Choose border color: red, blue, or custom.
+- Download final PNG image.
 
-Everything happens locally in the browser with canvas APIs.
-
-## Run locally
+## Run
 
 ```bash
 npm install
